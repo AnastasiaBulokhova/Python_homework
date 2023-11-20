@@ -124,12 +124,14 @@
 # print(min_melon, max_melon)
 
 
-n = 16
+n = 90
 a = 0
 k = 2
 res = 0
 
-while n > k:
-    res = k * a
+while n > res:
+    res = k ** a
     a += 1
+    if res > n:
+        break
     print(res)
