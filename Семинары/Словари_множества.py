@@ -49,23 +49,12 @@ print(words)
 
 st = set(words)
 print(st)
-count = 0
 # print(len(st)) - очень короткое решение
 
+count = 0
 for i in range(len(st)):
     count += 1
 
 print('Уникальные значения:', count) # мое решение, длинное
 
 
-var1 = '5 4'
-var2 = '1 3 5 7 9'
-var3 = '2 3 4 5'
-
-# Введите ваше решение ниже
-
-st_1 = {var2}
-st_2 = {var3}
-print(st_1, st_2)
-res = st_1.intersection(st_2)
-print(res)

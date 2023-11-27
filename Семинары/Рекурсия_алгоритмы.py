@@ -1,3 +1,35 @@
+# Задача №31. Решение в группах
+# Последовательностью Фибоначчи называется
+# последовательность чисел a0
+# , a1
+# , ..., an
+# , ..., где
+# a0
+#  = 0, a1
+#  = 1, ak
+#  = ak-1 + ak-2 (k > 1).
+# Требуется найти N-е число Фибоначчи
+# Input: 7
+# Output: 21
+# Задание необходимо решать через рекурсию
+
+
+def fibonaci(n):
+    if n <= 0:
+        return 1
+    else:
+        return fibonaci(n - 1) + fibonaci(n - 2)
+print(fibonaci(5))
+
+
+# как работает рекурсия
+# n = 5
+# f4 + f3
+# f2 + f1
+# f0=1 + f-1=1
+# 1
+
+
 # Задача №33. Решение в группах
 # Хакер Василий получил доступ к классному журналу и
 # хочет заменить все свои минимальные оценки на
@@ -7,12 +39,13 @@
 # Input: 5 -> 1 3 3 3 4
 # Output: 1 3 3 3 1
 
-def fib(n):
-    if n in [1, 2]:
-        return n
-    return fib(n-1) + fib(n-2)
+# def fib(n):
+#     if n in [1, 2]:
+#         return n
+#     return fib(n-1) + fib(n-2)
 
-spisok = []
-for i in range(1, 15):
-    spisok.append(fib(i))
-print(*spisok)
+# spisok = []
+# for i in range(1, 15):
+#     spisok.append(fib(i))
+# print(*spisok)
+
