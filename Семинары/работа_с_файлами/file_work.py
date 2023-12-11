@@ -2,7 +2,7 @@
 
 from logger import *
 
-Contact = 'Семинары\\Spravochnik\\Contact.txt'
+Contact = 'C:/Users/Nastua/Desktop/обучение/Python/Семинары/работа_с_файлами/Contact.txt'
 
 def interface():
     while True:
@@ -10,6 +10,7 @@ def interface():
             \n 1 - Добавить контакт \
             \n 2 - Вывести все контакты \
             \n 3 - Найти контакт \
+            \n 4 - Удалить контакт \
             \n 0- Выйти')
 
         command = int(input())
@@ -22,6 +23,8 @@ def interface():
                 print_contact(Contact)
             case 3:
                 find_contact(Contact)
+            case 4:
+                delite_contact(Contact)
             case _:
                 print('Неверная команда')
 
