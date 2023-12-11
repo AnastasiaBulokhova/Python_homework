@@ -7,7 +7,7 @@ def print_contact(file_name): # функция для вывода всех ко
         else:
             print('Список контактов пустой')
 
-def connect_with_user(): # спрашивает у юзера информац
+def connect_with_user(): # спрашивает у юзера информацию
     print('Введите имя, фамилию и телефон (например: Иванов Иван 89132456377): ')
     cont_info = input()
     return cont_info
@@ -21,28 +21,29 @@ def add_contact(file_name): # добавить контакт
         file.writelines(all_cont)
 
 
-def find_contact(file_name): # поиск контакта
-        with open(file_name, 'r', encoding='utf8') as file:
-            all_cont = file.readlines()
+def find_contact(file_name): # найти контакт
 
-        print('Выберите критерий для поиска: \
+    with open(file_name, 'r', encoding='utf8') as file:
+        all_cont = file.readlines()
+
+    print('Выберите критерий для поиска: \
             \n1 - Фамилия \
             \n2 - Имя \
             \n3 - Телефон')
 
-        comm = int(input())
-        print('Введите строку для поиска: ')
-        data = input()
-        print('Найденные контакты')
-        for cont in all_cont:
-            cont_as_list = print(list(cont.strip().split()))
-            if cont_as_list[comm - 1] == data:
-                print(*cont_as_list)
-                all_cont.remove(cont)
+    comm = int(input())
+    print('Введите строку для поиска:')
+    data = input()
+    print("Найденные контакты:")
+    for cont in all_cont:
+        cont_as_list = cont.strip().split()
+        if data in cont_as_list[comm - 1]:
+            print(*cont_as_list)
+
 
 
 def delite_contact(file_name): # удаление контакта
-    with open(file_name, 'w', encoding='utf8') as file:
+    with open(file_name, 'r', encoding='utf8') as file:
         all_cont = file.readlines()
         if len(all_cont) != 0:
             print('Все контакты: ')
@@ -50,13 +51,32 @@ def delite_contact(file_name): # удаление контакта
                 print(line.strip(), end = '\n\n')
         else:
             print('Список контактов пустой')
-
     print('Укажите, какой контакт вы бы хотели удалить: ')
     data = input()
     for cont in all_cont:
-        cont_as_list = print(list(cont.strip().split()))
-        if cont_as_list == data:
+        cont_as_list = cont.strip().split()
+        if data in cont_as_list:
+            all_cont.remove(cont)
             print('Контакт удален')
-            all_cont.replace(cont_as_list, ' ')
-        with open(file_name, 'w', encoding='utf8') as file:
+            with open(file_name, 'w', encoding='utf8') as file:
+                file.writelines(all_cont)
+
+
+
+def update_contact(file_name): # изменение контакта
+    with open(file_name, 'r', encoding='utf8') as file:
+        all_cont = file.readlines()
+    old_cont = input("Введите имя или фамилию контакта: ")
+    new_value = input('Введите измененные данные: ')
+    for cont in all_cont:
+        cont_as_list = cont.strip().split()
+        if old_cont in cont_as_list:
+            old_cont.replace(cont, new_value)
+            all_cont.append(cont)
+        else:
+            print("Контакт не найден")
+    #     cont_as_list = cont.strip().split()
+    #     cont_as_list = list(map(lambda x: x if x in old_cont else new_cont, cont_as_list))
+    # print(f'Обновленный список контактов', cont_as_list)
+    with open(file_name, 'w', encoding='utf8') as file:
             file.writelines(all_cont)

@@ -11,6 +11,7 @@ def interface():
             \n 2 - Вывести все контакты \
             \n 3 - Найти контакт \
             \n 4 - Удалить контакт \
+            \n 5 - Изментить контакт \
             \n 0- Выйти')
 
         command = int(input())
@@ -25,6 +26,8 @@ def interface():
                 find_contact(Contact)
             case 4:
                 delite_contact(Contact)
+            case 5:
+                update_contact(Contact)
             case _:
                 print('Неверная команда')
 
